@@ -9,4 +9,35 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>First_Servlet</servlet-name>
+  	<servlet-class>Servlet_API</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>First_Servlet</servlet-name>
+  	<url-pattern>/firstservlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Generic_Servlet</servlet-name>
+  	<servlet-class>Generic_Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Generic_Servlet</servlet-name>
+  	<url-pattern>/Generic_Servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>mayank</servlet-name>
+  	<servlet-class>Http_Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>mayank</servlet-name>
+  	<url-pattern>/httpservlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
