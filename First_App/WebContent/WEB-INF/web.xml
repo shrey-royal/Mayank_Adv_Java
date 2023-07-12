@@ -53,4 +53,45 @@
     <servlet-name>ValidateServlet</servlet-name>
     <url-pattern>/ValidateServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_Config</display-name>
+    <servlet-name>Servlet_Config</servlet-name>
+    <servlet-class>Servlet_Config</servlet-class>
+    <init-param>
+      <param-name>name</param-name>
+      <param-value>value</param-value>
+    </init-param>
+    <init-param>
+      <param-name>Mayank</param-name>
+      <param-value>Gharwali</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_Config</servlet-name>
+    <url-pattern>/Servlet_Config</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Servlet_Context</display-name>
+    <servlet-name>Servlet_Context</servlet-name>
+    <servlet-class>Servlet_Context</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet_Context</servlet-name>
+    <url-pattern>/Servlet_Context</url-pattern>
+  </servlet-mapping>
+  
+  
+  <context-param>
+  	<param-name>Mayank</param-name>
+  	<param-value>Baharwali</param-value>
+  </context-param>
+  
+  
+  
+  
+  
+  
+  
 </web-app>
