@@ -85,4 +85,24 @@
     <param-name>Mayank</param-name>
     <param-value>Baharwali</param-value>
   </context-param>
+  <servlet>
+    <description></description>
+    <display-name>Cookies</display-name>
+    <servlet-name>Cookies</servlet-name>
+    <servlet-class>Cookies</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cookies</servlet-name>
+    <url-pattern>/Cookies</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CookiesNext</display-name>
+    <servlet-name>CookiesNext</servlet-name>
+    <servlet-class>CookiesNext</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookiesNext</servlet-name>
+    <url-pattern>/CookiesNext</url-pattern>
+  </servlet-mapping>
 </web-app>
