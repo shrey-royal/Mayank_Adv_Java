@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -31,6 +32,9 @@ public class Form_Attrs extends HttpServlet {
 			String param = obj.nextElement();
 			System.out.println(param + ": " + req.getParameter(param));
 		}
+		
+		PrintWriter out = res.getWriter();
+		out.print("<a href='URL_ReWrite?uname="+req.getParameter("name")+"'>Visit</a>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
