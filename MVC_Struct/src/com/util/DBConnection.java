@@ -3,43 +3,34 @@ package com.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DBConnection {
-	public static Connection getConnection() {
-		Connection conn = null;
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/ecommerce";
-		String userName = "root";
-		String password = "root";
-		
+	private static final String DB_PROPERTIES_PATH = "/resources/db.properties";
+	
+	public static Connection getConnection() throws SQLException {
 		try {
-			//load driver
-			Class.forName(driver);
+			Properties properties = new Properties();
+			properties.load(DBConnection.class.getResourceAsStream(DB_PROPERTIES_PATH));
 			
-			//jdbc api open connection
-			conn = DriverManager.getConnection(url, userName, password);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+			String url = properties.getProperty("db.url");
+			String username = properties.getProperty("db.username");
+			String password = properties.getProperty("db.password");
+			
+			return DriverManager.getConnection(url, username, password);			
+		} catch (Exception e) {
+			throw new SQLException("Error establishing database Connection.", e);
+//			e.printStackTrace();
 		}
-		
-		return conn;
 	}
 	
-	public static void disconnect(Connection conn) {
+	public static void main(String[] args) {
 		try {
-			if(conn != null || !conn.isClosed()) {
-				conn.close();
-				System.out.println("DB Connection closed successfully...");
-			}
+			Connection conn = DBConnection.getConnection();
+			System.out.println(conn);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		Connection conn = DBConnection.getConnection();
-//		System.out.println(conn);
-//	}
 }
