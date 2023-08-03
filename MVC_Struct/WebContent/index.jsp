@@ -8,26 +8,12 @@
 <title>E-Commerce</title>
 </head>
 <body>
-	<header>
-		<h1>Welcome to Your E-Commerce Store</h1>
-		<nav>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Products</a></li>
-				<li><a href="#">Cart</a></li>
-				<li><a href="#">Orders</a></li>
-				<li><a href="#">Account</a></li>
-				
-			</ul>
-		</nav>
-	</header>
+	<jsp:include page="header.jsp"></jsp:include>
 	
 	<main>
 		<p>Welcome to our Online Store! Browse products and enjoy a seamless shopping experience.</p>
 	</main>
 	
-	<footer>
-		<p>&copy; 2023 Your E-Commerce Store. All rights reserved.</p>
-	</footer>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
