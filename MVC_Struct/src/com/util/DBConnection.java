@@ -3,34 +3,55 @@ package com.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class DBConnection {
-	private static final String DB_PROPERTIES_PATH = "/resources/db.properties";
 	
-	public static Connection getConnection() throws SQLException {
+	public static Connection getConnection() {
+		Connection conn = null;
+		String driver = "com.mysql.cj.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/oss";
+		String userName = "root";
+		String password = "root";
+		
 		try {
-			Properties properties = new Properties();
-			properties.load(DBConnection.class.getResourceAsStream(DB_PROPERTIES_PATH));
+			//load driver
+			Class.forName(driver);
 			
-			String url = properties.getProperty("db.url");
-			String username = properties.getProperty("db.username");
-			String password = properties.getProperty("db.password");
+			//jdbc api open connection
+			conn = DriverManager.getConnection(url, userName, password);
 			
-			return DriverManager.getConnection(url, username, password);			
-		} catch (Exception e) {
-			throw new SQLException("Error establishing database Connection.", e);
-//			e.printStackTrace();
+			if (conn == null) {
+				System.out.println("DB Not Connected...");
+			} else {
+				System.out.println("DB is Connected...");
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+		return conn;
 	}
 	
-	public static void main(String[] args) {
+	public static void disconnect(Connection conn) {
 		try {
-			Connection conn = DBConnection.getConnection();
-			System.out.println(conn);
+			if(conn != null || !conn.isClosed()) {
+				conn.close();
+				System.out.println("DB Connection closed successfully...");
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	public static void main(String[] args) {		
+		
+		Connection conn = DBConnection.getConnection();
+		
+		System.out.println(conn);
+		DBConnection.disconnect(conn);
+	}
+	
+	
 }

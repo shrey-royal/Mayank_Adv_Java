@@ -8,12 +8,6 @@
 <title>E-Commerce</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
 	
-	<main>
-		<p>Welcome to our Online Store! Browse products and enjoy a seamless shopping experience.</p>
-	</main>
-	
-	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
