@@ -8,6 +8,13 @@
 <title>E-Commerce</title>
 </head>
 <body>
-	
+	<center>
+		<h1>E-Commerce Store</h1>
+		<h2>
+			<a href="AddCustomer.jsp">Add Customer</a>
+			&nbsp;&nbsp;&nbsp;
+			<a href="list">List ALL Customers</a>
+		</h2>
+	</center>
 </body>
 </html>

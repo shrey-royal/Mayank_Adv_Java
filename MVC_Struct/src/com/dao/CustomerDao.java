@@ -21,11 +21,18 @@ public class CustomerDao {	//DAO - Data Access Objects
 			pstmt.setString(1, customerBean.getAddress());
 			pstmt.setString(2, customerBean.getEmail());
 			pstmt.setString(3, customerBean.getGender());
+			pstmt.setString(4, customerBean.getName());
+			pstmt.setString(5, customerBean.getPassword());
+			pstmt.setString(6, customerBean.getMobile());
+			pstmt.setString(7, customerBean.getPincode());
 			
-			
-			
-			
-			
+			int i = pstmt.executeUpdate();
+			if(i > 0) {
+				System.out.println("Data Inserted Successfully");
+			} else {
+				System.out.println("Failed to Insert Data");
+			}
+			DBConnection.disconnect(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

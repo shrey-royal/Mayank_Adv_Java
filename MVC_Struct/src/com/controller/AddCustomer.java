@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bean.CustomerBean;
+import com.dao.CustomerDao;
 
 @WebServlet("/AddCustomer")
 public class AddCustomer extends HttpServlet {
@@ -34,9 +35,18 @@ public class AddCustomer extends HttpServlet {
                 "Pincode: " + pincode);
         
         CustomerBean customerBean = new CustomerBean();
+        CustomerDao customerDao = new CustomerDao();
         
+        customerBean.setName(name);
+        customerBean.setEmail(email);
+        customerBean.setPassword(password);
+        customerBean.setMobile(mobile);
+        customerBean.setGender(gender);
+        customerBean.setAddress(address);
+        customerBean.setPincode(pincode);
         
+        customerDao.insertCustomer(customerBean);
         
-        
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}
 }
