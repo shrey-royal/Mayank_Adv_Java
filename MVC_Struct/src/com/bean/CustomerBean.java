@@ -8,9 +8,23 @@ public class CustomerBean {
 	private String gender;
 	private String address;
 	private String pincode;
+	private int id;
+	private String added_date;
 	
 	public String getName() {
 		return name;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setAdded_date(String added_date) {
+		this.added_date = added_date;
+	}
+	public String getAdded_date() {
+		return added_date;
 	}
 	public void setName(String name) {
 		this.name = name;
