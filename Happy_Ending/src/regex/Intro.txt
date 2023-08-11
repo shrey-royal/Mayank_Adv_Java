@@ -32,3 +32,104 @@ Methods:
 3. static boolean matches(String regex, CharSequence input) - It works as the combination of compile and matcher methods. It compiles the regular expression and matches the given input with the pattern.
 4. String[] split(CharSequence input) - splits the given input string around matches of given pattern.
 5. String pattern() - returns the regex pattern.
+
+
+Regex Character Classes:
+
+1. [abc] - a, b, or c (simple class)
+2. [^abc] - Any character except a, b, or c (negation)
+3. [a-zA-Z] - a through z or A through Z, inclusive (range)
+4. [a-d[m-p]] - a through d, or m through p: [a-dm-p] (union)
+5. [a-z&&[def]] - d, e, or f (intersection)
+6. [a-z&&[^bc]] - a through z, except for b and c: [ad-z] (subtraction)
+7. [a-z&&[^m-p]] - a through z, and not m through p: [a-lq-z](subtraction)
+
+Regex Quantifiers: It specify the frequency of any character.
+
+X? - X occurs once or not at all (X==1)
+X+ - X occurs once or more times (X>=1)
+X* - X occurs zero or more times (X>=0)
+X{n} - X occurs n times only	 (x=n)
+X{n,} - X occurs n or more times (x>=n)
+X{y,z} - X occurs at least y times but less than z times (X>=y && X<z)
+
+
+Regex MetaCharacters: They works as ShortCode
+
+.	Any character (may or may not match terminator)
+\d	Any digits, short of [0-9]
+\D	Any non-digit, short for [^0-9]
+\s	Any whitespace character, short for [\t\n\x0B\f\r]
+\S	Any non-whitespace character, short for [^\s]
+\w	Any word character, short for [a-zA-Z_0-9]
+\W	Any non-word character, short for [^\w]
+\b	A word boundary
+\B	A non word boundary
+
+[\t\n\x0B\f\r]:
+\t      The tab character (\u0009)
+\n      The newline (line feed) character (\u000A)
+\r      The carriage-return character (\u000D)
+\f      The form-feed character (\u000C)
+\x0B  The vertical tabulation (VT) character
+
+attest test testing 
+-> \Btest\B
+test
+
+-> \btest\b
+test
+
+The difference between `\B` and `\b` in regular expressions is related to word boundaries:
+
+1. `\B`: This matches a position that is not a word boundary. It's used to match positions within a word or between two non-word characters.
+
+2. `\b`: This matches a position at a word boundary. It's used to match positions between a word character and a non-word character, or at the beginning or end of the string.
+
+Here's a quick summary of their behaviors:
+
+- `\B`: Matches a position that is **not** a word boundary.
+- `\b`: Matches a position that **is** a word boundary.
+
+For example, let's consider the text "attest test testing". Using `\Btest\B`, you'll match the second occurrence of "test" (within a word), while using `\btest\b`, you'll match the second occurrence as a whole word (at a word boundary).
+
+In the context of the text "attest test testing":
+
+- Using `\Btest\B` would match the second "test" within the word "attest".
+- Using `\btest\b` would match the second "test" as a whole word.
+
+Here's a visual representation:
+
+```
+attest    test   testing
+  ^       ^^^
+  |        |
+\Btest\B   \btest\b
+```
+
+- `\Btest\B` matches the second "test" within the word "attest".
+- `\btest\b` matches the second "test" as a whole word.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
