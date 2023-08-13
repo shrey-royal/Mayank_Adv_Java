@@ -1,11 +1,11 @@
 package regex;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexExample {
 	
 	public static void main(String[] args) {
+		/*
 		Pattern p = Pattern.compile(".s");// . -> single character
 		Matcher m = p.matcher("as");
 		
@@ -17,6 +17,23 @@ public class RegexExample {
 		
 		boolean b3 = Pattern.matches(".s", "as");
 		System.out.println("b3: " + b3);
+		
+		
+		System.out.println(Pattern.matches("[mnk]", "n"));
+		System.out.println(Pattern.matches("[mnk]", "mnnkkkkkk"));
+		
+		System.out.println(Pattern.matches("[mnk]?", "m"));
+		System.out.println(Pattern.matches("[mnk]+", "mnm"));
+		System.out.println(Pattern.matches("[mnk]*", "mmm"));
+		 */
+		
+		
+//		System.out.println(Pattern.matches("\\d?", ""));
+//		System.out.println(Pattern.matches("\\D+", "abc"));
+		
+		
+		System.out.println(Pattern.matches("\\d{3}[a-zA-Z]{5}", "102mayan"));
+		
 	}
 
 }
