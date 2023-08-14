@@ -6,6 +6,13 @@ public class RegexExample2 {
 	}
 }
 
+
+/*
+ * URL: ^(https?|ftp)://[^\s/$.?#].[^\s]*$
+ * https://
+ */
+
+
 /*
 Problem Statement:
 
