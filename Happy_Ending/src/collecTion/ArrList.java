@@ -33,6 +33,8 @@ public class ArrList {
 		System.out.println(l1);
 		System.out.println(l2);
 		
+		
+		
 	}
 }
 /*
