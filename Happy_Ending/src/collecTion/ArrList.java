@@ -1,6 +1,7 @@
 package collecTion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class ArrList {
@@ -23,7 +24,14 @@ public class ArrList {
 		//getter setter methods
 //		System.out.println(obj.get(1));
 		obj.set(2, "Mayank");
-		System.out.println(obj.get(2));
+//		System.out.println(obj.get(2));
+		
+		ArrayList<Integer> l1 = new ArrayList<Integer>(Arrays.asList(234, 546, 234, 456, 234, 345, 234));
+		ArrayList<Integer> l2 = new ArrayList<Integer>(Arrays.asList(234, 345, 234, 756, 234, 345, 234));
+		
+		System.out.println(l2.retainAll(l1));
+		System.out.println(l1);
+		System.out.println(l2);
 		
 	}
 }
