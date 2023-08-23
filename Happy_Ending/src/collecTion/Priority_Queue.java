@@ -41,7 +41,6 @@ public class Priority_Queue {
 		}
 		
 		System.out.println(nums);
-		
 	}
 }
 
