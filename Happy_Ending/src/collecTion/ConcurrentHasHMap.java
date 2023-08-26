@@ -58,7 +58,7 @@ forEachEntry() - executes the specified function for each entry
 forEachKey() - executes the specified function for each key
 forEachValue() - executes the specified function for each value
 
-Here,
+Here,	
 
 4 is a parallel threshold
 (k, v) -> v is a transformer function. It transfers the key/value mappings into values only.
