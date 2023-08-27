@@ -1,0 +1,7 @@
+Database Connectivity Steps:
+
+1. Register Driver
+2. Get Connection
+3. Create Statement
+4. Execute Query
+5. Close Connection
