@@ -18,22 +18,21 @@ public class BasicProgram {
 			
 			boolean exit = false;
 			while(!exit) {
-				int choice = displayMenuAndGetChoice();
-				switch(choice) {
+				switch(displayMenuAndGetChoice()) {
 					case 1:
-						//insert
+						insertData(statement);
 						break;
 					
 					case 2:
-						//update
+						updateData(statement);
 						break;
 					
 					case 3:
-						//delete
+						deleteData(statement);
 						break;
 					
 					case 4:
-						//retrieve
+						retrieveAllData(statement);
 						break;
 					
 					case 5:
@@ -52,14 +51,14 @@ public class BasicProgram {
 			e.printStackTrace();
 		}
 	}
-	
+
 	//Create the "Student" Table
-	private static void createTable(Statement statement) throws SQLException {
+	private static void createTable(Statement statement) throws SQLException {		
 		String createTableSQL = "CREATE TABLE IF NOT EXISTS Student (" +
-								"id INT PRIMARY KEY, " + 
-								"name VARHCAR(40), " +
-								"age INT, " +
-								"grade VARCHAR(2))";
+	            "id INT PRIMARY KEY, " +
+	            "name VARCHAR(50), " +
+	            "age INT, " +
+	            "grade VARCHAR(2))";
 		statement.executeUpdate(createTableSQL);
 	}
 	
@@ -72,10 +71,118 @@ public class BasicProgram {
 		System.out.println("4. Retrieve All Data");
 		System.out.println("5. Exit");
 		System.out.println("Enter your choice: ");
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		return sc.nextInt();
+		int choice = sc.nextInt();
+		return choice;
 	}
+	
+	private static void insertData(Statement statement) throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter student details: ");
+		System.out.println("ID: ");
+		int id = sc.nextInt();
+		
+		sc.nextLine();
+		System.out.println("Name: ");
+		String name = sc.nextLine();
+		
+		System.out.println("Age: ");
+		int age = sc.nextInt();
+		
+		sc.nextLine();
+		System.out.println("Grade: ");
+		String grade = sc.nextLine();
+		
+		String insertQuery = "INSERT INTO Student (id, name, age, grade) VALUES ("+id+",'"+name+"', "+age+", '"+grade+"')";
+		
+		try {
+			int rowsAffected = statement.executeUpdate(insertQuery);
+			if(rowsAffected > 0) {
+				System.out.println("Data inserted successfully.");
+			} else {
+				System.out.println("Failed to insert data.");
+			}
+		} catch (SQLException e) {
+			System.out.println("Error inserting data: " + e.getMessage());
+		}
+		
+	}
+
+	private static void deleteData(Statement statement) throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter student ID to delete: ");
+		int idToDelete = sc.nextInt();
+		
+		String deleteQuery = "DELETE FROM Student WHERE id = " + idToDelete;
+		
+		try {
+			int rowsAffected = statement.executeUpdate(deleteQuery);
+			if(rowsAffected > 0) {
+				System.out.println("Data deleted successfully.");
+			} else {
+				System.out.println("No matching records found for delete.");
+			}
+		} catch (SQLException e) {
+			System.out.println("Error deleting data: " + e.getMessage());
+		}
+		
+	}
+
+	private static void updateData(Statement statement) throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter student ID to update: ");
+		int idToUpdate = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Enter new Student details: ");
+		System.out.println("Name: ");
+		String newName = sc.nextLine();
+		
+		System.out.println("Age: ");
+		int newAge = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Grade: ");
+		String newGrade = sc.nextLine();
+		
+		String updateQuery = "UPDATE Student SET name= '"+newName+"', age = "+newAge+", grade = '"+newGrade+"' WHERE id = " + idToUpdate;
+		
+		try {
+			int rowsAffected = statement.executeUpdate(updateQuery);
+			if(rowsAffected > 0) {
+				System.out.println("Data updated successfully.");
+			} else {
+				System.out.println("No matching records found for update.");
+			}
+		} catch (SQLException e) {
+			System.out.println("Error updating data: " + e.getMessage());
+		}
+	}
+
+	private static void retrieveAllData(Statement statement) throws SQLException {
+		String selectQuery = "SELECT * FROM Student";
+		
+		try {
+			ResultSet rs = statement.executeQuery(selectQuery);
+			System.out.println("\nStudent Data: ");
+			while (rs.next()){
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				String grade = rs.getString("grade");
+				
+				System.out.println("ID: " + id + ", Name: " + name + ", Age: " + age + ", Grade: " + grade);
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("Error retrieving data: " + e.getMessage());
+		}
+		
+	}
+	
 }
 
 /*
