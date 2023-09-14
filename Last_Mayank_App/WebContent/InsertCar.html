@@ -17,9 +17,17 @@
 </style>
 </head>
 <body>
+	<center>
+		<h1>Car Showroom</h1>
+		<h2>
+			<a href="InsertCar.html">Insert Car</a>
+			&nbsp;&nbsp;&nbsp;
+			<a href="listall">List All Cars</a>
+		</h2>
+	</center>
 		<h1 align="center">Add New Car</h1>
 	<div class="center-form">
-		<form action="InsertCarController" method="post">
+		<form action="add" method="post">
 			<label for="make">Make: </label>
 			<input type="text" name="make" placeholder="enter company name">
 			<br><br>
@@ -29,7 +37,7 @@
 			<br><br>
 			
 			<label for="year">Year: </label>
-			<input type="text" name="year" placeholder="enter year of manufacturing">
+			<input type="number" name="year" placeholder="enter year of manufacturing">
 			<br><br>
 			
 			<label for="price">Price: </label>

@@ -8,6 +8,7 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
+	<welcome-file>InsertCar.html</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -17,6 +18,16 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>InsertCarController</servlet-name>
-    <url-pattern>/InsertCarController</url-pattern>
+    <url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListAllCars</display-name>
+    <servlet-name>ListAllCars</servlet-name>
+    <servlet-class>com.controller.ListAllCars</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListAllCars</servlet-name>
+    <url-pattern>/listall</url-pattern>
   </servlet-mapping>
 </web-app>
