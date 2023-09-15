@@ -20,7 +20,7 @@ public class CarDao {
 			pstmt.setString(1, car.getMake());
 			pstmt.setString(2, car.getModel());
 			pstmt.setInt(3, car.getYear());
-			pstmt.setFloat(4, car.getPrice());
+			pstmt.setDouble(4, car.getPrice());
 			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("New Car Added Successfully!");
@@ -48,13 +48,83 @@ public class CarDao {
 				car.setMake(rs.getString("make"));
 				car.setModel(rs.getString("model"));
 				car.setYear(rs.getInt("year"));
-				car.setPrice(rs.getFloat("price"));
+				car.setPrice(rs.getDouble("price"));
 				cars.add(car);
 			}
+			conn.close();
 			return cars;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+
+	public CarBean getCarById(int id) {
+		try {
+			String selectQuery = "SELECT * FROM car WHERE id = ?";
+			conn = DBConnection.getConnection();
+			
+			PreparedStatement pstmt = conn.prepareStatement(selectQuery);
+			pstmt.setInt(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				CarBean car = new CarBean();
+				car.setId(rs.getInt("id"));
+				car.setMake(rs.getString("make"));
+				car.setModel(rs.getString("model"));
+				car.setYear(rs.getInt("year"));
+				car.setPrice(rs.getDouble("price"));
+				return car;
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void deleteCar(int id) {
+		try {
+			
+			String deleteQuery = "DELETE FROM car WHERE id = ?";
+			conn = DBConnection.getConnection();
+			
+			PreparedStatement pstmt = conn.prepareStatement(deleteQuery);
+			pstmt.setInt(1, id);
+			
+			pstmt.execute();
+			pstmt.close();
+			
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void updateCar(CarBean carBean) {
+		try {
+			String updateQuery = "UPDATE car SET make=?, model=?, year=?, price=? WHERE id=?";
+			conn = DBConnection.getConnection();
+			
+			PreparedStatement pstmt = conn.prepareStatement(updateQuery);
+			pstmt.setString(1, carBean.getMake());
+			pstmt.setString(2, carBean.getModel());
+			pstmt.setInt(3, carBean.getYear());
+			pstmt.setDouble(4, carBean.getPrice());
+			
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("Car Details Updated Successfully!");
+			} else {
+				System.out.println("Failed to Update Car Details!");
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 }

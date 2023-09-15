@@ -5,7 +5,7 @@ public class CarBean {
 	private String make;
 	private String model;
 	private int year;
-	private float price;
+	private double price;
 	
 	
 	public int getId() {
@@ -32,10 +32,10 @@ public class CarBean {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 }
