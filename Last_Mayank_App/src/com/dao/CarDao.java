@@ -94,7 +94,11 @@ public class CarDao {
 			PreparedStatement pstmt = conn.prepareStatement(deleteQuery);
 			pstmt.setInt(1, id);
 			
-			pstmt.execute();
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("Car Deleted Successfully");
+			} else {
+				System.out.println("Failed to delete car");
+			}
 			pstmt.close();
 			
 			conn.close();
@@ -113,6 +117,7 @@ public class CarDao {
 			pstmt.setString(2, carBean.getModel());
 			pstmt.setInt(3, carBean.getYear());
 			pstmt.setDouble(4, carBean.getPrice());
+			pstmt.setInt(5, carBean.getId());
 			
 			if(pstmt.executeUpdate() == 1) {
 				System.out.println("Car Details Updated Successfully!");

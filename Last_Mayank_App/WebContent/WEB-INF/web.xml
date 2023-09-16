@@ -42,12 +42,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>UpdateCar</display-name>
-    <servlet-name>UpdateCar</servlet-name>
-    <servlet-class>com.controller.UpdateCar</servlet-class>
+    <display-name>UpdateCarDetails</display-name>
+    <servlet-name>UpdateCarDetails</servlet-name>
+    <servlet-class>com.controller.UpdateCarDetails</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdateCar</servlet-name>
-    <url-pattern>/updatecar</url-pattern>
+    <servlet-name>UpdateCarDetails</servlet-name>
+    <url-pattern>/update</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCarServlet</display-name>
+    <servlet-name>DeleteCarServlet</servlet-name>
+    <servlet-class>com.controller.DeleteCarServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCarServlet</servlet-name>
+    <url-pattern>/delete</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -30,7 +30,7 @@
 	</center>
 		<h1 align="center">Add New Car</h1>
 	<div class="center-form">
-		<form action="updatecar" method="get">
+		<form action="update" method="get">
 		
 			<input type="hidden" name="id" value="<c:out value='${car.id }'/>"/>
 			
