@@ -6,50 +6,66 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List All Cars</title>
-<style type="text/css">
-	table {
-		border-collapse: collapse;
-	}
-</style>
+
+<!-- Add Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Add DataTables CSS -->
+<link href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+<!-- Add jQuery (required by DataTables) -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Add DataTables JavaScript -->
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
 </head>
 <body>
-	<center>
-		<h1>Car Showroom</h1>
-		<h2>
-			<a href="InsertCar.html">Insert Car</a>
-			&nbsp;&nbsp;&nbsp;
-			<a href="listall">List All Cars</a>
-		</h2>
-	</center>
-	
-	<div align="center">
-		<table border="1" cellpadding="5">
-			<caption><h2>List Of Cars</h2></caption>
-			<tr>
-				<th>Id</th>
-				<th>Make</th>
-				<th>Model</th>
-				<th>Year</th>
-				<th>Price</th>
-				<th>Actions</th>
-			</tr>
-			
-			<c:forEach var="car" items="${ cars }">
-				<tr>
-					<td><c:out value="${car.id }"/></td>
-					<td><c:out value="${car.make }"/></td>
-					<td><c:out value="${car.model }"/></td>
-					<td><c:out value="${car.year }"/></td>
-					<td><c:out value="${car.price }"/></td>
-					<td>
-						<a href="edit?id=<c:out value='${car.id}'/>">Edit</a>
-						&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
-						<a href="delete?id=<c:out value='${car.id}'/>">Delete</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	
+    <center>
+        <h1>Car Showroom</h1>
+        <h2>
+            <a href="InsertCar.html">Insert Car</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="listall">List All Cars</a>
+        </h2>
+    </center>
+
+	<caption><h1 align=center>List Of Cars</h1></caption>
+        <table id="carTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <c:forEach var="car" items="${ cars }">
+                    <tr>
+                        <td><c:out value="${car.id }"/></td>
+                        <td><c:out value="${car.make }"/></td>
+                        <td><c:out value="${car.model }"/></td>
+                        <td><c:out value="${car.year }"/></td>
+                        <td><c:out value="${car.price }"/></td>
+                        <td>
+                            <a href="edit?id=<c:out value='${car.id}'/>">Edit</a>
+                            &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
+                            <a href="delete?id=<c:out value='${car.id}'/>">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#carTable').DataTable();
+        });
+    </script>
 </body>
 </html>
